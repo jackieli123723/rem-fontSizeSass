@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>龙渊网络科技</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="format-detection" content="telephone=no">
+      <meta content="initial-dpr=2,maximum-dpr=3" name="flexible" />
+      <meta name="apple-mobile-web-app-title" content="龙渊网络科技">
+      <meta name="keywords" content="龙渊网络科技" />
+      <meta name="description" content="龙渊网络科技" />
+      <script src="js/flexible.js"></script>
+      <link rel="stylesheet" href="css/base.css">
+      <link rel="stylesheet" href="css/main-sass.css">
+  </head>
+  <body>
+    <header class="header-fixed">
+        <a href="javascript:history.go(-1);" class="header-pre"><img src="images/back.png" /></a>
+        <h1>礼包中心</h1>
+        <button class="close" style="display:block">更多</button>
+    </header>
+    <div class="content-wrapper">
+        <div class="gift-box-center">
+           <textarea id="giftCode" class="activation-code-area" readonly="readonly"></textarea>
+            <div class="gift-header-box">
+                <a href="#" class="my-gift">
+                    <img src="images/game.png" />
+                    <div class="gift-platform">
+                        <div class="name text-over">巨龙之战</div>
+                        <div class="number i_middle">有效期：2017-09-01 过期</div>
+                        <div class="plate">激活码：<i>asd429jklz67177777</i></div>
+                    </div>
+                </a>
+                <div class="gift-btn">复制</div>
+            </div>
+            <div class="gift-header-box">
+                <a href="#" class="my-gift">
+                    <img src="images/game.png" />
+                    <div class="gift-platform">
+                        <div class="name text-over">巨龙之战</div>
+                        <div class="number i_middle">有效期：2017-09-01 过期</div>
+                        <div class="plate">激活码：<i>asd429jklz67144</i></div>
+                    </div>
+                </a>
+                <div class="gift-btn">复制</div>
+            </div>
+            <div class="gift-header-box">
+                <a href="#" class="my-gift">
+                    <img src="images/game.png" />
+                    <div class="gift-platform">
+                        <div class="name text-over">巨龙之战</div>
+                        <div class="number i_middle">有效期：2017-09-01 过期</div>
+                        <div class="plate">激活码：<i>asd429jklz671666</i></div>
+                    </div>
+                </a>
+                <div class="gift-btn">复制</div>
+            </div>
+        </div>
+    </div>
+      <script src="js/zepto.js"></script>
+    <script type="text/javascript">
+    (function($) {
+        $.show_msg = function(msg, timeOut) {
+            var timer = null;
+            var c = $("#msg_dis_container");
+            timeOut = timeOut || 1000;
+            if (c.length == 0) {
+                $(document.body).append('<div class="motify" style="display:none" id="msg_dis_container"><div class="motify-inner" id="msg_dis_content"></div></div>');
+                c = $("#msg_dis_container");
+            }
+            $("#msg_dis_content").html(msg);
+            c.css("display", "block");
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+                c.css("display", "none");
+            }, timeOut);
+        };
+
+    })($);
+    </script>
+    <script type="text/javascript">
+    $(function() {
+
+       function copyGiftCode(id) {
+             var Url2 = document.getElementById(id); //必须用元生 zepto没有该方法
+            Url2.select(); // 选择对象 
+            document.execCommand("Copy"); // 执行浏览器复制命令 
+            $.show_msg("已复制好，可贴粘。");
+        }
+
+        $(".gift-btn").tap(function() {
+            var $this=$(this);
+            var activationCode=$this.parents(".gift-header-box").find(".plate i").text();
+            $("#giftCode").val(activationCode);
+            copyGiftCode("giftCode");
+        })
+
+
+
+    })
+    </script>
+
+  </body>
+
+</html>

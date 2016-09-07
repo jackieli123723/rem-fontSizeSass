@@ -1,0 +1,247 @@
+
+
+
+@mixin font-dpr($font-size) {
+    font-size: $font-size;
+    [data-dpr="2"] & {
+        font-size: $font-size * 2;
+    }
+    [data-dpr="3"] & {
+        font-size: $font-size * 3;
+    }
+}
+
+
+
+$rem-baseline: 75px !default;
+@function rem-separator($list) {
+
+    @if function-exists("list-separator")==true {
+        @return list-separator($list);
+    }
+    $test-list: ();
+    @each $item in $list {
+        $test-list: append($test-list, $item, space);
+    }
+    @return if($test-list==$list, space, comma);
+}
+
+@mixin rem-baseline($zoom: 100%) {
+    font-size: $zoom / 16px * $rem-baseline;
+}
+
+@function rem-convert($to, $values...) {
+    $result: ();
+    $separator: rem-separator($values);
+    @each $value in $values {
+        @if type-of($value)=="number" and unit($value)=="rem" and $to=="px" {
+            $result: append($result, $value / 1rem * $rem-baseline, $separator);
+        }
+        @else if type-of($value)=="number" and unit($value)=="px" and $to=="rem" {
+            $result: append($result, $value / ($rem-baseline / 1rem), $separator);
+        }
+        @else if type-of($value)=="list" {
+            $result: append($result, rem-convert($to, $value...), $separator);
+        }
+        @else {
+            $result: append($result, $value, $separator);
+        }
+    }
+    @return if(length($result)==1, nth($result, 1), $result);
+}
+
+@function px2rem($values...) {
+    //@if $rem-px-only {
+    //    @return rem-convert(px, $values...);
+    //} @else {
+    @return rem-convert(rem, $values...);
+    //}
+}
+
+@mixin px2rem($properties, $values...) {
+    @if type-of($properties)=="map" {
+        @each $property in map-keys($properties) {
+            @include px2rem($property, map-get($properties, $property));
+        }
+    }
+    @else {
+        @each $property in $properties {
+            //@if $rem-fallback or $rem-px-only {
+            //    #{$property}: rem-convert(px, $values...);
+            //}
+            //@if not $rem-px-only {
+            #{$property}: rem-convert(rem, $values...);
+            //}
+        }
+    }
+}
+
+
+.i_middle {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.header-fixed {
+    height: px2rem(88px);
+    line-height: px2rem(88px);
+    background-color: #1997dd;
+    position: fixed;
+    box-sizing: border-box;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+    h1 {
+        font-size: px2rem(36px);
+        color: #fff;
+        text-align: center;
+    }
+    button {
+        font-size: px2rem(26px);
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: 0;
+        color: #000;
+        border: 0;
+        height: px2rem(88px);
+        width: px2rem(108px);
+        height: px2rem(88px);
+        display: none;
+        color: #fff;
+        font-size: px2rem(24px);
+        img {
+            vertical-align: middle;
+            width: px2rem(48px);
+            height: px2rem(48px);
+        }
+    }
+}
+
+.header-pre {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    width: px2rem(100px);
+    img {
+        vertical-align: middle;
+        height: px2rem(36px);
+    }
+}
+
+.header-pre-icon {
+    display: inline-block;
+    transform: rotate(135deg);
+    width: px2rem(16px);
+    height: px2rem(16px);
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    vertical-align: middle;
+}
+
+.content-wrapper {
+    top: px2rem(88px);
+    position: absolute;
+    width: 100%;
+}
+
+
+.gift-box-center {
+    padding: px2rem(30px) px2rem(20px) 0;
+    &.get{
+        padding-bottom:px2rem(100px);
+    }
+
+    .activation-code-area{
+            opacity:0.0000001; /* bug textarea不能为none 不然复制失败 */
+            width:0;
+            height:0;
+            font-size:0;
+    }
+
+    .gift-header-box {
+        background: #fff;
+        margin-bottom: px2rem(25px);
+        border-radius: px2rem(4px);
+        position: relative;
+        img {
+            float: left;
+            width: px2rem(100px);
+            height: px2rem(100px);
+            border-radius: px2rem(4px);
+        }
+        img.gift-new {
+            float: clear;
+            width: px2rem(48px);
+            height: px2rem(48px);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        a {
+            display: block;
+            height: 100%;
+            padding: px2rem(20px) px2rem(16px);
+            &.my-gift {
+                padding: px2rem(30px) px2rem(15px);
+            }
+            &.gift-center {
+                padding: px2rem(30px) px2rem(16px) px2rem(30px) px2rem(45px);
+            }
+        }
+        .gift-btn {
+            position: absolute;
+            bottom: px2rem(30px);
+            right: px2rem(14px);
+            width: px2rem(100px);
+            padding: px2rem(8px) 0;
+            border-radius: px2rem(6px);
+            background: #ff751a;
+            font-size: px2rem(24px);
+            color: #fff;
+            text-align: center;
+            z-index: 2;
+            &.done {
+                background: #d9d9d9;
+                color: #666;
+            }
+        }
+        .gift-platform {
+            margin-left: px2rem(132px);
+            height: px2rem(100px);
+            position: relative;
+            .i_middle {
+                top: 54%;
+            }
+            .name {
+                font-size: px2rem(28px);
+                color: #333;
+            }
+            .number,
+            .plate {
+                color: #808080;
+                font-size: px2rem(22px);
+                span {
+                    color: #ff751a;
+                }
+            }
+            .plate {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                   i{
+                    font-style:normal;
+                }
+            }
+        }
+    }
+}

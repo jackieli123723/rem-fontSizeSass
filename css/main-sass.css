@@ -1,0 +1,33 @@
+@charset "UTF-8";
+.i_middle { position: absolute; width: 100%; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+
+.header-fixed { height: 1.17333rem; line-height: 1.17333rem; background-color: #1997dd; position: fixed; box-sizing: border-box; top: 0; right: 0; left: 0; z-index: 99; }
+.header-fixed h1 { font-size: 0.48rem; color: #fff; text-align: center; }
+.header-fixed button { font-size: 0.34667rem; position: absolute; top: 0; right: 0; background: 0; color: #000; border: 0; height: 1.17333rem; width: 1.44rem; height: 1.17333rem; display: none; color: #fff; font-size: 0.32rem; }
+.header-fixed button img { vertical-align: middle; width: 0.64rem; height: 0.64rem; }
+
+.header-pre { position: absolute; top: 0; left: 0; bottom: 0; text-align: center; width: 1.33333rem; }
+.header-pre img { vertical-align: middle; height: 0.48rem; }
+
+.header-pre-icon { display: inline-block; -webkit-transform: rotate(135deg); -ms-transform: rotate(135deg); transform: rotate(135deg); width: 0.21333rem; height: 0.21333rem; border: solid #fff; border-width: 0 2px 2px 0; vertical-align: middle; }
+
+.content-wrapper { top: 1.17333rem; position: absolute; width: 100%; }
+
+.gift-box-center { padding: 0.4rem 0.26667rem 0; }
+.gift-box-center.get { padding-bottom: 1.33333rem; }
+.gift-box-center .activation-code-area { opacity: 0.0000001; /* bug textarea涓嶈兘涓簄one 涓嶇劧澶嶅埗澶辫触 */ width: 0; height: 0; font-size: 0; }
+.gift-box-center .gift-header-box { background: #fff; margin-bottom: 0.33333rem; border-radius: 0.05333rem; position: relative; }
+.gift-box-center .gift-header-box img { float: left; width: 1.33333rem; height: 1.33333rem; border-radius: 0.05333rem; }
+.gift-box-center .gift-header-box img.gift-new { float: clear; width: 0.64rem; height: 0.64rem; position: absolute; top: 0; left: 0; }
+.gift-box-center .gift-header-box a { display: block; height: 100%; padding: 0.26667rem 0.21333rem; }
+.gift-box-center .gift-header-box a.my-gift { padding: 0.4rem 0.2rem; }
+.gift-box-center .gift-header-box a.gift-center { padding: 0.4rem 0.21333rem 0.4rem 0.6rem; }
+.gift-box-center .gift-header-box .gift-btn { position: absolute; bottom: 0.4rem; right: 0.18667rem; width: 1.33333rem; padding: 0.10667rem 0; border-radius: 0.08rem; background: #ff751a; font-size: 0.32rem; color: #fff; text-align: center; z-index: 2; }
+.gift-box-center .gift-header-box .gift-btn.done { background: #d9d9d9; color: #666; }
+.gift-box-center .gift-header-box .gift-platform { margin-left: 1.76rem; height: 1.33333rem; position: relative; }
+.gift-box-center .gift-header-box .gift-platform .i_middle { top: 54%; }
+.gift-box-center .gift-header-box .gift-platform .name { font-size: 0.37333rem; color: #333; }
+.gift-box-center .gift-header-box .gift-platform .number, .gift-box-center .gift-header-box .gift-platform .plate { color: #808080; font-size: 0.29333rem; }
+.gift-box-center .gift-header-box .gift-platform .number span, .gift-box-center .gift-header-box .gift-platform .plate span { color: #ff751a; }
+.gift-box-center .gift-header-box .gift-platform .plate { position: absolute; left: 0; bottom: 0; width: 100%; }
+.gift-box-center .gift-header-box .gift-platform .plate i { font-style: normal; }
